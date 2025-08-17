@@ -1,0 +1,16 @@
+<section>
+    <h2 class="text-lg font-semibold mb-3">Configurações</h2>
+    <div class="space-y-3 text-sm">
+      <p>Armazenamento: <strong>IndexedDB</strong> (offline)</p>
+      <button class="px-3 py-2 border rounded-lg"
+              onclick="app.exportJSON()">
+        Exportar notas (JSON)
+      </button>
+      <label class="block">
+        <span class="text-sm">Importar JSON</span>
+        <input type="file" accept="application/json" class="mt-1"
+               onchange="app.importJSON(this.files[0])" />
+      </label>
+    </div>
+  </section>
+  
