@@ -150,6 +150,8 @@
     📄 settings.gradle
     📄 variables.gradle
   📁 www
+    📁 icons
+      📄 horse-emoji.svg
     📁 js
       📄 app.js
       📄 db.js
@@ -159,6 +161,8 @@
       📄 settings.html
     📄 index.html
   📄 capacitor.config.json
+  📄 contexto.md
+  📄 manifest.json
   📄 package-lock.json
   📄 package.json
 ```
@@ -176,6 +180,27 @@
   "webDir": "www"
 }
 
+```
+
+### `manifest.json`
+
+```json
+{
+    "name": "NotasHTMX",
+    "short_name": "NotasHTMX",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🐴</text></svg>",
+        "sizes": "512x512",
+        "type": "image/svg+xml"
+      }
+    ]
+  }
+  
 ```
 
 ### `package-lock.json`
@@ -196,6 +221,9 @@
         "@capacitor/android": "^7.4.2",
         "@capacitor/cli": "^7.4.2",
         "@capacitor/core": "^7.4.2"
+      },
+      "devDependencies": {
+        "cordova-res": "^0.15.4"
       }
     },
     "node_modules/@capacitor-community/speech-recognition": {
@@ -617,6 +645,18 @@
         "node": ">=0.6"
       }
     },
+    "node_modules/bl": {
+      "version": "4.1.0",
+      "resolved": "https://registry.npmjs.org/bl/-/bl-4.1.0.tgz",
+      "integrity": "sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "buffer": "^5.5.0",
+        "inherits": "^2.0.4",
+        "readable-stream": "^3.4.0"
+      }
+    },
     "node_modules/bplist-parser": {
       "version": "0.3.2",
       "resolved": "https://registry.npmjs.org/bplist-parser/-/bplist-parser-0.3.2.tgz",
@@ -627,6 +667,31 @@
       },
       "engines": {
         "node": ">= 5.10.0"
+      }
+    },
+    "node_modules/buffer": {
+      "version": "5.7.1",
+      "resolved": "https://registry.npmjs.org/buffer/-/buffer-5.7.1.tgz",
+      "integrity": "sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/feross"
+        },
+        {
+          "type": "patreon",
+          "url": "https://www.patreon.com/feross"
+        },
+        {
+          "type": "consulting",
+          "url": "https://feross.org/support"
+        }
+      ],
+      "license": "MIT",
+      "dependencies": {
+        "base64-js": "^1.3.1",
+        "ieee754": "^1.1.13"
       }
     },
     "node_modules/buffer-crc32": {
@@ -647,6 +712,20 @@
         "node": ">=10"
       }
     },
+    "node_modules/color": {
+      "version": "4.2.3",
+      "resolved": "https://registry.npmjs.org/color/-/color-4.2.3.tgz",
+      "integrity": "sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "color-convert": "^2.0.1",
+        "color-string": "^1.9.0"
+      },
+      "engines": {
+        "node": ">=12.5.0"
+      }
+    },
     "node_modules/color-convert": {
       "version": "2.0.1",
       "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
@@ -665,6 +744,17 @@
       "integrity": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==",
       "license": "MIT"
     },
+    "node_modules/color-string": {
+      "version": "1.9.1",
+      "resolved": "https://registry.npmjs.org/color-string/-/color-string-1.9.1.tgz",
+      "integrity": "sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "color-name": "^1.0.0",
+        "simple-swizzle": "^0.2.2"
+      }
+    },
     "node_modules/commander": {
       "version": "12.1.0",
       "resolved": "https://registry.npmjs.org/commander/-/commander-12.1.0.tgz",
@@ -672,6 +762,27 @@
       "license": "MIT",
       "engines": {
         "node": ">=18"
+      }
+    },
+    "node_modules/cordova-res": {
+      "version": "0.15.4",
+      "resolved": "https://registry.npmjs.org/cordova-res/-/cordova-res-0.15.4.tgz",
+      "integrity": "sha512-TjFZhjUtK8qq4DVrgR+KI7tKcUL704cnkTPRhHbKlCPzefHoz1tBOX93wc76dOMmOWKTsbJz83DIm6mqdp5Pmg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@ionic/utils-array": "^2.1.5",
+        "@ionic/utils-fs": "^3.1.5",
+        "debug": "^4.2.0",
+        "elementtree": "^0.1.7",
+        "sharp": "^0.29.2",
+        "tslib": "^2.0.3"
+      },
+      "bin": {
+        "cordova-res": "bin/cordova-res"
+      },
+      "engines": {
+        "node": ">=10.3.0"
       }
     },
     "node_modules/cross-spawn": {
@@ -705,6 +816,32 @@
         }
       }
     },
+    "node_modules/decompress-response": {
+      "version": "6.0.0",
+      "resolved": "https://registry.npmjs.org/decompress-response/-/decompress-response-6.0.0.tgz",
+      "integrity": "sha512-aW35yZM6Bb/4oJlZncMH2LCoZtJXTRxES17vE3hoRiowU2kWHaJKFkSBDnDR+cm9J+9QhXmREyIfv0pji9ejCQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "mimic-response": "^3.1.0"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/deep-extend": {
+      "version": "0.6.0",
+      "resolved": "https://registry.npmjs.org/deep-extend/-/deep-extend-0.6.0.tgz",
+      "integrity": "sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=4.0.0"
+      }
+    },
     "node_modules/define-lazy-prop": {
       "version": "2.0.0",
       "resolved": "https://registry.npmjs.org/define-lazy-prop/-/define-lazy-prop-2.0.0.tgz",
@@ -712,6 +849,19 @@
       "license": "MIT",
       "engines": {
         "node": ">=8"
+      }
+    },
+    "node_modules/detect-libc": {
+      "version": "1.0.3",
+      "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-1.0.3.tgz",
+      "integrity": "sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "bin": {
+        "detect-libc": "bin/detect-libc.js"
+      },
+      "engines": {
+        "node": ">=0.10"
       }
     },
     "node_modules/eastasianwidth": {
@@ -738,11 +888,31 @@
       "integrity": "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==",
       "license": "MIT"
     },
+    "node_modules/end-of-stream": {
+      "version": "1.4.5",
+      "resolved": "https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.4.5.tgz",
+      "integrity": "sha512-ooEGc6HP26xXq/N+GCGOT0JKCLDGrq2bQUZrQ7gyrJiZANJ/8YDTxTpQBXGMn+WbIQXNVpyWymm7KYVICQnyOg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "once": "^1.4.0"
+      }
+    },
     "node_modules/env-paths": {
       "version": "2.2.1",
       "resolved": "https://registry.npmjs.org/env-paths/-/env-paths-2.2.1.tgz",
       "integrity": "sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==",
       "license": "MIT",
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/expand-template": {
+      "version": "2.0.3",
+      "resolved": "https://registry.npmjs.org/expand-template/-/expand-template-2.0.3.tgz",
+      "integrity": "sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==",
+      "dev": true,
+      "license": "(MIT OR WTFPL)",
       "engines": {
         "node": ">=6"
       }
@@ -784,6 +954,13 @@
         "url": "https://github.com/sponsors/isaacs"
       }
     },
+    "node_modules/fs-constants": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/fs-constants/-/fs-constants-1.0.0.tgz",
+      "integrity": "sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/fs-extra": {
       "version": "11.3.1",
       "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-11.3.1.tgz",
@@ -822,6 +999,13 @@
         "node": ">=8"
       }
     },
+    "node_modules/github-from-package": {
+      "version": "0.0.0",
+      "resolved": "https://registry.npmjs.org/github-from-package/-/github-from-package-0.0.0.tgz",
+      "integrity": "sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/glob": {
       "version": "11.0.3",
       "resolved": "https://registry.npmjs.org/glob/-/glob-11.0.3.tgz",
@@ -851,6 +1035,27 @@
       "integrity": "sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==",
       "license": "ISC"
     },
+    "node_modules/ieee754": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz",
+      "integrity": "sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/feross"
+        },
+        {
+          "type": "patreon",
+          "url": "https://www.patreon.com/feross"
+        },
+        {
+          "type": "consulting",
+          "url": "https://feross.org/support"
+        }
+      ],
+      "license": "BSD-3-Clause"
+    },
     "node_modules/inherits": {
       "version": "2.0.4",
       "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz",
@@ -865,6 +1070,13 @@
       "engines": {
         "node": "^14.17.0 || ^16.13.0 || >=18.0.0"
       }
+    },
+    "node_modules/is-arrayish": {
+      "version": "0.3.2",
+      "resolved": "https://registry.npmjs.org/is-arrayish/-/is-arrayish-0.3.2.tgz",
+      "integrity": "sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/is-docker": {
       "version": "2.2.1",
@@ -953,6 +1165,19 @@
         "node": "20 || >=22"
       }
     },
+    "node_modules/mimic-response": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/mimic-response/-/mimic-response-3.1.0.tgz",
+      "integrity": "sha512-z0yWI+4FDrrweS8Zmt4Ej5HdJmky15+L2e6Wgn3+iK5fWzb6T3fhNFq2+MeTRb064c6Wr4N/wv0DzQTjNzHNGQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
     "node_modules/minimatch": {
       "version": "10.0.3",
       "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-10.0.3.tgz",
@@ -966,6 +1191,16 @@
       },
       "funding": {
         "url": "https://github.com/sponsors/isaacs"
+      }
+    },
+    "node_modules/minimist": {
+      "version": "1.2.8",
+      "resolved": "https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz",
+      "integrity": "sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==",
+      "dev": true,
+      "license": "MIT",
+      "funding": {
+        "url": "https://github.com/sponsors/ljharb"
       }
     },
     "node_modules/minipass": {
@@ -1014,10 +1249,24 @@
         "node": ">=10"
       }
     },
+    "node_modules/mkdirp-classic": {
+      "version": "0.5.3",
+      "resolved": "https://registry.npmjs.org/mkdirp-classic/-/mkdirp-classic-0.5.3.tgz",
+      "integrity": "sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/ms": {
       "version": "2.1.3",
       "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
       "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+      "license": "MIT"
+    },
+    "node_modules/napi-build-utils": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/napi-build-utils/-/napi-build-utils-2.0.0.tgz",
+      "integrity": "sha512-GEbrYkbfF7MoNaoh2iGG84Mnf/WZfB0GdGEsM8wz7Expx/LlWf5U8t9nvJKXSp3qr5IsEbK04cBGhol/KwOsWA==",
+      "dev": true,
       "license": "MIT"
     },
     "node_modules/native-run": {
@@ -1043,6 +1292,36 @@
       },
       "engines": {
         "node": ">=16.0.0"
+      }
+    },
+    "node_modules/node-abi": {
+      "version": "3.75.0",
+      "resolved": "https://registry.npmjs.org/node-abi/-/node-abi-3.75.0.tgz",
+      "integrity": "sha512-OhYaY5sDsIka7H7AtijtI9jwGYLyl29eQn/W623DiN/MIv5sUqc4g7BIDThX+gb7di9f6xK02nkp8sdfFWZLTg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "semver": "^7.3.5"
+      },
+      "engines": {
+        "node": ">=10"
+      }
+    },
+    "node_modules/node-addon-api": {
+      "version": "4.3.0",
+      "resolved": "https://registry.npmjs.org/node-addon-api/-/node-addon-api-4.3.0.tgz",
+      "integrity": "sha512-73sE9+3UaLYYFmDsFZnqCInzPyh3MqIwZO9cw58yIqAZhONrrabrYyYe3TuIqtIiOuTXVhsGau8hcrhhwSsDIQ==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/once": {
+      "version": "1.4.0",
+      "resolved": "https://registry.npmjs.org/once/-/once-1.4.0.tgz",
+      "integrity": "sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==",
+      "dev": true,
+      "license": "ISC",
+      "dependencies": {
+        "wrappy": "1"
       }
     },
     "node_modules/open": {
@@ -1113,6 +1392,43 @@
         "node": ">=10.4.0"
       }
     },
+    "node_modules/prebuild-install": {
+      "version": "7.1.3",
+      "resolved": "https://registry.npmjs.org/prebuild-install/-/prebuild-install-7.1.3.tgz",
+      "integrity": "sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "detect-libc": "^2.0.0",
+        "expand-template": "^2.0.3",
+        "github-from-package": "0.0.0",
+        "minimist": "^1.2.3",
+        "mkdirp-classic": "^0.5.3",
+        "napi-build-utils": "^2.0.0",
+        "node-abi": "^3.3.0",
+        "pump": "^3.0.0",
+        "rc": "^1.2.7",
+        "simple-get": "^4.0.0",
+        "tar-fs": "^2.0.0",
+        "tunnel-agent": "^0.6.0"
+      },
+      "bin": {
+        "prebuild-install": "bin.js"
+      },
+      "engines": {
+        "node": ">=10"
+      }
+    },
+    "node_modules/prebuild-install/node_modules/detect-libc": {
+      "version": "2.0.4",
+      "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.0.4.tgz",
+      "integrity": "sha512-3UDv+G9CsCKO1WKMGw9fwq/SWJYbI0c5Y7LU1AXYoDdbhE2AHQ6N6Nb34sG8Fj7T5APy8qXDCKuuIHd1BR0tVA==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=8"
+      }
+    },
     "node_modules/prompts": {
       "version": "2.4.2",
       "resolved": "https://registry.npmjs.org/prompts/-/prompts-2.4.2.tgz",
@@ -1134,6 +1450,40 @@
       "engines": {
         "node": ">=6"
       }
+    },
+    "node_modules/pump": {
+      "version": "3.0.3",
+      "resolved": "https://registry.npmjs.org/pump/-/pump-3.0.3.tgz",
+      "integrity": "sha512-todwxLMY7/heScKmntwQG8CXVkWUOdYxIvY2s0VWAAMh/nd8SoYiRaKjlr7+iCs984f2P8zvrfWcDDYVb73NfA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "end-of-stream": "^1.1.0",
+        "once": "^1.3.1"
+      }
+    },
+    "node_modules/rc": {
+      "version": "1.2.8",
+      "resolved": "https://registry.npmjs.org/rc/-/rc-1.2.8.tgz",
+      "integrity": "sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==",
+      "dev": true,
+      "license": "(BSD-2-Clause OR MIT OR Apache-2.0)",
+      "dependencies": {
+        "deep-extend": "^0.6.0",
+        "ini": "~1.3.0",
+        "minimist": "^1.2.0",
+        "strip-json-comments": "~2.0.1"
+      },
+      "bin": {
+        "rc": "cli.js"
+      }
+    },
+    "node_modules/rc/node_modules/ini": {
+      "version": "1.3.8",
+      "resolved": "https://registry.npmjs.org/ini/-/ini-1.3.8.tgz",
+      "integrity": "sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==",
+      "dev": true,
+      "license": "ISC"
     },
     "node_modules/readable-stream": {
       "version": "3.6.2",
@@ -1206,6 +1556,30 @@
         "node": ">=10"
       }
     },
+    "node_modules/sharp": {
+      "version": "0.29.3",
+      "resolved": "https://registry.npmjs.org/sharp/-/sharp-0.29.3.tgz",
+      "integrity": "sha512-fKWUuOw77E4nhpyzCCJR1ayrttHoFHBT2U/kR/qEMRhvPEcluG4BKj324+SCO1e84+knXHwhJ1HHJGnUt4ElGA==",
+      "dev": true,
+      "hasInstallScript": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "color": "^4.0.1",
+        "detect-libc": "^1.0.3",
+        "node-addon-api": "^4.2.0",
+        "prebuild-install": "^7.0.0",
+        "semver": "^7.3.5",
+        "simple-get": "^4.0.0",
+        "tar-fs": "^2.1.1",
+        "tunnel-agent": "^0.6.0"
+      },
+      "engines": {
+        "node": ">=12.13.0"
+      },
+      "funding": {
+        "url": "https://opencollective.com/libvips"
+      }
+    },
     "node_modules/shebang-command": {
       "version": "2.0.0",
       "resolved": "https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz",
@@ -1232,6 +1606,63 @@
       "resolved": "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz",
       "integrity": "sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==",
       "license": "ISC"
+    },
+    "node_modules/simple-concat": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/simple-concat/-/simple-concat-1.0.1.tgz",
+      "integrity": "sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/feross"
+        },
+        {
+          "type": "patreon",
+          "url": "https://www.patreon.com/feross"
+        },
+        {
+          "type": "consulting",
+          "url": "https://feross.org/support"
+        }
+      ],
+      "license": "MIT"
+    },
+    "node_modules/simple-get": {
+      "version": "4.0.1",
+      "resolved": "https://registry.npmjs.org/simple-get/-/simple-get-4.0.1.tgz",
+      "integrity": "sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/feross"
+        },
+        {
+          "type": "patreon",
+          "url": "https://www.patreon.com/feross"
+        },
+        {
+          "type": "consulting",
+          "url": "https://feross.org/support"
+        }
+      ],
+      "license": "MIT",
+      "dependencies": {
+        "decompress-response": "^6.0.0",
+        "once": "^1.3.1",
+        "simple-concat": "^1.0.0"
+      }
+    },
+    "node_modules/simple-swizzle": {
+      "version": "0.2.2",
+      "resolved": "https://registry.npmjs.org/simple-swizzle/-/simple-swizzle-0.2.2.tgz",
+      "integrity": "sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "is-arrayish": "^0.3.1"
+      }
     },
     "node_modules/sisteransi": {
       "version": "1.0.5",
@@ -1328,6 +1759,16 @@
         "node": ">=8"
       }
     },
+    "node_modules/strip-json-comments": {
+      "version": "2.0.1",
+      "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz",
+      "integrity": "sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
     "node_modules/tar": {
       "version": "6.2.1",
       "resolved": "https://registry.npmjs.org/tar/-/tar-6.2.1.tgz",
@@ -1343,6 +1784,43 @@
       },
       "engines": {
         "node": ">=10"
+      }
+    },
+    "node_modules/tar-fs": {
+      "version": "2.1.3",
+      "resolved": "https://registry.npmjs.org/tar-fs/-/tar-fs-2.1.3.tgz",
+      "integrity": "sha512-090nwYJDmlhwFwEW3QQl+vaNnxsO2yVsd45eTKRBzSzu+hlb1w2K9inVq5b0ngXuLVqQ4ApvsUHHnu/zQNkWAg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "chownr": "^1.1.1",
+        "mkdirp-classic": "^0.5.2",
+        "pump": "^3.0.0",
+        "tar-stream": "^2.1.4"
+      }
+    },
+    "node_modules/tar-fs/node_modules/chownr": {
+      "version": "1.1.4",
+      "resolved": "https://registry.npmjs.org/chownr/-/chownr-1.1.4.tgz",
+      "integrity": "sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==",
+      "dev": true,
+      "license": "ISC"
+    },
+    "node_modules/tar-stream": {
+      "version": "2.2.0",
+      "resolved": "https://registry.npmjs.org/tar-stream/-/tar-stream-2.2.0.tgz",
+      "integrity": "sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "bl": "^4.0.3",
+        "end-of-stream": "^1.4.1",
+        "fs-constants": "^1.0.0",
+        "inherits": "^2.0.3",
+        "readable-stream": "^3.1.1"
+      },
+      "engines": {
+        "node": ">=6"
       }
     },
     "node_modules/tar/node_modules/minipass": {
@@ -1377,6 +1855,19 @@
       "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
       "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
       "license": "0BSD"
+    },
+    "node_modules/tunnel-agent": {
+      "version": "0.6.0",
+      "resolved": "https://registry.npmjs.org/tunnel-agent/-/tunnel-agent-0.6.0.tgz",
+      "integrity": "sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "safe-buffer": "^5.0.1"
+      },
+      "engines": {
+        "node": "*"
+      }
     },
     "node_modules/undici-types": {
       "version": "7.10.0",
@@ -1458,6 +1949,13 @@
         "url": "https://github.com/chalk/wrap-ansi?sponsor=1"
       }
     },
+    "node_modules/wrappy": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz",
+      "integrity": "sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==",
+      "dev": true,
+      "license": "ISC"
+    },
     "node_modules/xml2js": {
       "version": "0.6.2",
       "resolved": "https://registry.npmjs.org/xml2js/-/xml2js-0.6.2.tgz",
@@ -1529,6 +2027,9 @@
     "@capacitor/android": "^7.4.2",
     "@capacitor/cli": "^7.4.2",
     "@capacitor/core": "^7.4.2"
+  },
+  "devDependencies": {
+    "cordova-res": "^0.15.4"
   }
 }
 
@@ -1542,29 +2043,233 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Notas</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ffffff">
 
-  <!-- Tailwind via CDN (rápido e simples) -->
+  <title>Notas 🐴</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- HTMX -->
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <!-- anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
+
+  <!-- Shim: evita erros se app.* for chamado antes do app.js -->
+  <script>
+    window.app = window.app || {
+      showList(){}, showForm(){}, showSettings(){},
+      saveNote(){}, deleteNote(){}, deleteCurrentNote(){},
+      importJSON(){}, exportJSON(){}
+    };
+  </script>
 
   <style>
-    /* evita que o conteúdo fique atrás da bottom nav */
     body { padding-bottom: 4.5rem; }
+    :root {
+      --color-surface:        #ffffff;
+      --color-surface-muted:  #f1f5f9;
+      --color-text:           #0f172a; /* sempre preto */
+      --color-border:         #e2e8f0;
+      --color-primary:        #0f766e;
+      --color-primary-fg:     #ffffff;
+      --color-danger:         #dc2626;
+      --color-danger-fg:      #ffffff;
+    }
+    /* overlay do flash radial */
+    #theme-flash {
+      pointer-events: none;
+      position: fixed; inset: 0;
+      opacity: 0;
+      background: radial-gradient(circle at var(--x,50%) var(--y,50%),
+                  rgba(255,255,255,0.55), transparent 60%);
+      mix-blend-mode: screen;
+      z-index: 50;
+    }
   </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
 
-  <!-- Header -->
-  <header class="sticky top-0 z-10 bg-white border-b border-slate-200 p-4">
-    <div class="max-w-2xl mx-auto px-4 py-3">
-      <h1 class="text-xl font-semibold">Notas</h1>
+  <script>
+    const THEME_KEY = 'app_theme_vars_v4';
+
+    const hsl = (h,s,l)=>`hsl(${Math.round(h)},${Math.round(s)}%,${Math.round(l)}%)`;
+    const rand = (a,b)=>a+Math.random()*(b-a);
+    const pick = (arr)=>arr[Math.floor(Math.random()*arr.length)];
+
+    function applyThemeVars(vars){
+      const root=document.documentElement;
+      Object.entries(vars).forEach(([k,v])=>root.style.setProperty(`--${k}`,v));
+    }
+    function saveTheme(vars){ localStorage.setItem(THEME_KEY,JSON.stringify(vars)); }
+    function loadTheme(){
+      try{ return JSON.parse(localStorage.getItem(THEME_KEY)); }catch{ return null; }
+    }
+
+    // Tema vívido e aleatório; fundos também mudam; texto sempre preto
+    function generateTheme(){
+      const H = rand(0,360);
+      const mode = pick(['complement','triad','analog']);
+      const H_accent =
+        mode==='complement' ? (H+180)%360 :
+        mode==='triad'      ? (H+120)%360 :
+                              (H+rand(20,40))%360;
+      const H_danger = (H+pick([340,350,0,10,20]))%360;
+
+      const sBase = rand(22,38);
+      const surface        = hsl(H_accent, sBase, rand(90,96));
+      const surfaceMuted   = hsl(H_accent, sBase+rand(4,12), rand(80,88));
+      const border         = hsl(H_accent, sBase+rand(8,16), rand(68,78));
+      const primary        = hsl(H, rand(70,92), rand(45,60));
+      const danger         = hsl(H_danger, rand(70,92), rand(46,58));
+
+      return {
+        'color-surface':        surface,
+        'color-surface-muted':  surfaceMuted,
+        'color-border':         border,
+        'color-text':           '#0f172a', // sempre preto
+        'color-primary':        primary,
+        'color-primary-fg':     '#ffffff',
+        'color-danger':         danger,
+        'color-danger-fg':      '#ffffff',
+      };
+    }
+
+    // Interpolação animada das variáveis com anime.js (se disponível)
+    function animateTheme(toVars, ev){
+      const root = document.documentElement;
+      const cur = (name)=>getComputedStyle(root).getPropertyValue(`--${name}`).trim();
+      const keys = ['color-surface','color-surface-muted','color-border','color-primary','color-danger'];
+
+      // flash radial opcional
+      const flash = document.getElementById('theme-flash');
+      if (flash && window.anime){
+        const cx = (ev?.clientX ?? innerWidth/2) / innerWidth * 100 + '%';
+        const cy = (ev?.clientY ?? innerHeight*0.3) / innerHeight * 100 + '%';
+        flash.style.setProperty('--x', cx);
+        flash.style.setProperty('--y', cy);
+        anime({ targets: flash, opacity: [0,0.9,0], duration: 700, easing: 'easeOutQuad' });
+      }
+
+      if (!window.anime){
+        applyThemeVars(toVars);
+        return;
+      }
+
+      // parse hsl(...) -> {h,s,l}
+      const toHSL = (v)=>{
+        const m=v.match(/hsl\(([\d.]+),\s*([\d.]+)%?,\s*([\d.]+)%\)/i);
+        if (m) return {h:+m[1], s:+m[2], l:+m[3]};
+        return {h:0,s:0,l:100};
+      };
+
+      const from = {}, to = {};
+      keys.forEach(k=>{
+        from[k] = toHSL(cur(k));
+        to[k]   = toHSL(toVars[k]);
+      });
+
+      anime({
+        targets: {t:0},
+        t: 1,
+        duration: 900,
+        easing: 'easeInOutCubic',
+        update: anim=>{
+          const p = anim.animations[0].currentValue;
+          keys.forEach(k=>{
+            const h = from[k].h + (to[k].h - from[k].h)*p;
+            const s = from[k].s + (to[k].s - from[k].s)*p;
+            const l = from[k].l + (to[k].l - from[k].l)*p;
+            root.style.setProperty(`--${k}`, hsl(h,s,l));
+          });
+          root.style.setProperty('--color-text','#0f172a');
+          root.style.setProperty('--color-primary-fg','#ffffff');
+          root.style.setProperty('--color-danger-fg','#ffffff');
+        }
+      });
+
+      // micro animações
+      anime({
+        targets: ['header','nav'],
+        boxShadow: ['0 0 0 rgba(0,0,0,0)','0 10px 30px rgba(0,0,0,0.08)','0 0 0 rgba(0,0,0,0)'],
+        duration: 900, easing: 'easeInOutQuad'
+      });
+      anime({
+        targets: 'button, a, .card, .item',
+        translateY: [6,0],
+        opacity: [0.6,1],
+        delay: anime.stagger(18),
+        duration: 520,
+        easing: 'easeOutCubic'
+      });
+    }
+
+    // aplica o salvo cedo
+    (function(){
+      const saved = loadTheme();
+      if (saved) applyThemeVars(saved);
+    })();
+
+    window.Theme = {
+      randomize(ev){
+        const vars = generateTheme();
+        saveTheme(vars);
+        animateTheme(vars, ev);
+      },
+      reset(){
+        localStorage.removeItem(THEME_KEY);
+        const defaults = {
+          'color-surface':'#ffffff',
+          'color-surface-muted':'#f1f5f9',
+          'color-border':'#e2e8f0',
+          'color-text':'#0f172a',
+          'color-primary':'#0f766e',
+          'color-primary-fg':'#ffffff',
+          'color-danger':'#dc2626',
+          'color-danger-fg':'#ffffff',
+        };
+        saveTheme(defaults);
+        animateTheme(defaults);
+      }
+    };
+  </script>
+</head>
+
+<body class="bg-[var(--color-surface)] text-[var(--color-text)] min-h-dvh">
+  <div id="theme-flash"></div>
+
+  <header class="bg-[var(--color-surface)] border-b border-[var(--color-border)] p-4">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 class="text-lg font-semibold flex items-center gap-2">
+        🐴 Notas HTMX 
+      </h1>
+
+      <!-- Ações de tema -->
+      <div class="flex items-center gap-2">
+        <button id="btn-theme-random"
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-muted)] active:scale-95 transition"
+          onclick="Theme.randomize(event)" title="Gerar tema aleatório e salvar">
+          🎨
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 7h-9M14 17H4M20 12H4" />
+          </svg>
+          <span class="hidden sm:inline">Tema aleatório</span>
+        </button>
+
+        <button id="btn-theme-reset"
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-muted)] transition"
+          onclick="Theme.reset()" title="Voltar ao tema padrão">
+          ♻️
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 12a8 8 0 1 1-8-8" />
+            <path d="M4 4v6h6" />
+          </svg>
+          <span class="hidden sm:inline">Resetar</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Conteúdo principal -->
   <main id="main" class="max-w-2xl mx-auto px-4 py-4"
         hx-get="partials/notes_list.html"
         hx-trigger="load"
@@ -1573,20 +2278,31 @@
     <!-- htmx carrega a lista aqui -->
   </main>
 
-  <!-- Bottom Nav -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 pb-4">
+  <nav class="fixed bottom-0 left-0 right-0 bg-[var(--color-surface)] border-t border-[var(--color-border)] pb-4">
     <div class="max-w-2xl mx-auto grid grid-cols-3">
-      <button class="py-3 text-sm font-medium hover:bg-slate-100"
-              onclick="app.showList()">Notas</button>
-      <button class="py-3 text-sm font-medium hover:bg-slate-100"
-              onclick="app.showForm()">Nova</button>
-      <button class="py-3 text-sm font-medium hover:bg-slate-100"
-              onclick="app.showSettings()">Config</button>
+      <button class="py-3 text-sm font-medium hover:bg-[var(--color-surface-muted)]"
+              onclick="app.showList()">📄 Notas</button>
+      <button class="py-3 text-sm font-medium hover:bg-[var(--color-surface-muted)]"
+              onclick="app.showForm()">➕ Nova</button>
+      <button class="py-3 text-sm font-medium hover:bg-[var(--color-surface-muted)]"
+              onclick="app.showSettings()">⚙️ Config</button>
     </div>
   </nav>
 
+  <!-- Aplica novamente o tema salvo ao final e anima entrada se anime.js existir -->
+  <script>
+    const savedAtEnd = loadTheme?.();
+    if (savedAtEnd) applyThemeVars(savedAtEnd);
+
+    if (window.anime){
+      anime({ targets: 'header, nav', translateY: [-12,0], opacity: [0,1], duration: 600, easing: 'easeOutCubic' });
+      anime({ targets: '#main', opacity: [0,1], scale: [0.98,1], duration: 700, delay: 120, easing: 'easeOutCubic' });
+    }
+  </script>
+
+  <!-- seus módulos (mantidos) -->
   <script type="module" src="js/db.js"></script>
-  <script  type="module" src="js/app.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
 
@@ -1618,19 +2334,20 @@ async function renderList() {
     item.className = 'p-3 bg-white rounded-xl border border-slate-200';
     const date = new Date(n.updatedAt).toLocaleString();
     item.innerHTML = `
-      <div class="flex items-start gap-3">
-        <div class="flex-1">
-          <h3 class="font-medium">${escapeHTML(n.title || '(sem título)')}</h3>
-          <p class="text-sm text-slate-600 line-clamp-2">${escapeHTML(n.content || '')}</p>
-          <p class="mt-1 text-xs text-slate-400">${date}</p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <button class="px-2 py-1 border rounded-lg text-sm"
-                  onclick="app.showForm('${n.id}')">Editar</button>
-          <button class="px-2 py-1 border border-red-500 text-red-600 rounded-lg text-sm"
-                  onclick="app.deleteNote('${n.id}')">Excluir</button>
-        </div>
-      </div>
+<div class="flex items-start gap-3">
+  <div class="flex-1">
+    <h3 class="font-medium">${escapeHTML(n.title || '(sem título)')}</h3>
+    <p class="text-sm text-[var(--color-text)]/70 line-clamp-2">${escapeHTML(n.content || '')}</p>
+    <p class="mt-1 text-xs text-[var(--color-text)]/50">${date}</p>
+  </div>
+  <div class="flex flex-col gap-2">
+    <button class="px-2 py-1 border border-[var(--color-border)] rounded-lg text-sm bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
+            onclick="app.showForm('${n.id}')">Editar</button>
+    <button class="px-2 py-1 border border-[var(--color-danger)] text-[var(--color-danger)] rounded-lg text-sm hover:bg-[var(--color-surface-muted)]"
+            onclick="app.deleteNote('${n.id}')">Excluir</button>
+  </div>
+</div>
+
     `;
     list.appendChild(item);
   }
@@ -1828,7 +2545,8 @@ export const NotesDB = {
   
       <div>
         <label class="block text-sm font-medium mb-1" for="title">Título</label>
-        <input id="title" class="w-full border rounded-lg px-3 py-2"
+        <input id="title" 
+               class="w-full border border-[var(--color-border)] rounded-lg px-3 py-2 bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-[var(--color-text)]/50"
                placeholder="Ex.: Ideias para o projeto" required />
       </div>
   
@@ -1838,30 +2556,31 @@ export const NotesDB = {
   
           <!-- Botão do microfone -->
           <button type="button" id="mic-btn"
-                  class="text-sm px-2 py-1 border rounded-lg"
+                  class="text-sm px-2 py-1 border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
                   title="Ditado por voz">
             🎙️ Falar
           </button>
         </div>
   
-        <textarea id="content" rows="8" class="w-full border rounded-lg px-3 py-2"
+        <textarea id="content" rows="8" 
+                  class="w-full border border-[var(--color-border)] rounded-lg px-3 py-2 bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-[var(--color-text)]/50"
                   placeholder="Fale ou escreva aqui…"></textarea>
   
-        <p id="speech-debug" class="mt-1 text-xs text-slate-400"></p>
+        <p id="speech-debug" class="mt-1 text-xs text-[var(--color-text)]/50"></p>
       </div>
   
       <div class="flex gap-2">
         <button type="submit"
-                class="px-3 py-2 bg-slate-900 text-white rounded-lg">
+                class="px-3 py-2 bg-[var(--color-primary)] text-[var(--color-primary-fg)] rounded-lg hover:opacity-90">
           Salvar
         </button>
         <button type="button"
-                class="px-3 py-2 border rounded-lg"
+                class="px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
                 onclick="app.showList()">
           Cancelar
         </button>
         <button type="button" id="deleteBtn"
-                class="ml-auto px-3 py-2 border border-red-500 text-red-600 rounded-lg hidden"
+                class="ml-auto px-3 py-2 border border-[var(--color-danger)] text-[var(--color-danger)] rounded-lg hidden hover:bg-[var(--color-surface-muted)]"
                 onclick="app.deleteCurrentNote()">
           Excluir
         </button>
@@ -2041,15 +2760,18 @@ export const NotesDB = {
 ```html
 <section>
     <h2 class="text-lg font-semibold mb-3">Configurações</h2>
-    <div class="space-y-3 text-sm">
+    <div class="space-y-3 text-sm text-[var(--color-text)]">
       <p>Armazenamento: <strong>IndexedDB</strong> (offline)</p>
-      <button class="px-3 py-2 border rounded-lg"
+      
+      <button class="px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
               onclick="app.exportJSON()">
         Exportar notas (JSON)
       </button>
+      
       <label class="block">
         <span class="text-sm">Importar JSON</span>
-        <input type="file" accept="application/json" class="mt-1"
+        <input type="file" accept="application/json"
+               class="mt-1 text-[var(--color-text)] file:mr-2 file:px-3 file:py-1 file:border file:border-[var(--color-border)] file:rounded-lg file:bg-[var(--color-surface)] file:text-[var(--color-text)] hover:file:bg-[var(--color-surface-muted)]"
                onchange="app.importJSON(this.files[0])" />
       </label>
     </div>
