@@ -14,8 +14,6 @@ Feito pra práticar.
 ### Tela inicial
 ![Tela inicial](docs/inicial.png)
 
-> Substitua os caminhos acima (`docs/images/...`) pelas imagens reais do projeto.
-
 ---
 
 ## 🚀 Funcionalidades
@@ -28,29 +26,3 @@ Feito pra práticar.
 
 ---
 
-## 📂 Estrutura do projeto
-
-- `www/` → Código principal em HTML, JS e assets  
-- `android/` → Projeto Android gerado pelo Capacitor  
-- `capacitor.config.json` → Configurações do app  
-- `manifest.json` → Configurações PWA  
-
----
-
-## 🛠️ Instalação e execução
-
-### Pré-requisitos
-- [Node.js](https://nodejs.org/) (>= 20)  
-- [Capacitor CLI](https://capacitorjs.com/docs/cli)  
-
-### Passos
-```bash
-# Instalar dependências
-npm install
-
-# Rodar no navegador (PWA)
-npx cap serve
-
-# Build para Android
-npx cap sync android
-npx cap open android
