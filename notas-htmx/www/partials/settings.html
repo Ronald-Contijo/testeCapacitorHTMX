@@ -1,14 +1,17 @@
 <section>
     <h2 class="text-lg font-semibold mb-3">Configurações</h2>
-    <div class="space-y-3 text-sm">
+    <div class="space-y-3 text-sm text-[var(--color-text)]">
       <p>Armazenamento: <strong>IndexedDB</strong> (offline)</p>
-      <button class="px-3 py-2 border rounded-lg"
+      
+      <button class="px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
               onclick="app.exportJSON()">
         Exportar notas (JSON)
       </button>
+      
       <label class="block">
         <span class="text-sm">Importar JSON</span>
-        <input type="file" accept="application/json" class="mt-1"
+        <input type="file" accept="application/json"
+               class="mt-1 text-[var(--color-text)] file:mr-2 file:px-3 file:py-1 file:border file:border-[var(--color-border)] file:rounded-lg file:bg-[var(--color-surface)] file:text-[var(--color-text)] hover:file:bg-[var(--color-surface-muted)]"
                onchange="app.importJSON(this.files[0])" />
       </label>
     </div>

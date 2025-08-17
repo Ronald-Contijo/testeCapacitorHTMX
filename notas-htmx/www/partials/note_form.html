@@ -1,37 +1,198 @@
 <section id="noteForm">
     <h2 class="text-lg font-semibold mb-3">Nota</h2>
   
-    <form id="formNota" class="space-y-3" onsubmit="app.saveNote(event)">
+    <form id="formNota" class="space-y-3" onsubmit="ensureTitleSync(); return app.saveNote(event)">
       <input type="hidden" id="noteId" />
+  
+      <!-- Campo oculto para título gerado automaticamente (fallback) -->
+      <input type="hidden" id="note-title-hidden" />
   
       <div>
         <label class="block text-sm font-medium mb-1" for="title">Título</label>
-        <input id="title" class="w-full border rounded-lg px-3 py-2"
+        <input id="title" 
+               class="w-full border border-[var(--color-border)] rounded-lg px-3 py-2 bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-[var(--color-text)]/50"
                placeholder="Ex.: Ideias para o projeto" required />
       </div>
   
       <div>
-        <label class="block text-sm font-medium mb-1" for="content">Conteúdo</label>
-        <textarea id="content" rows="8" class="w-full border rounded-lg px-3 py-2"
-                  placeholder="Escreva aqui..."></textarea>
+        <div class="flex items-center justify-between mb-1">
+          <label class="block text-sm font-medium" for="content">Conteúdo</label>
+  
+          <!-- Botão do microfone -->
+          <button type="button" id="mic-btn"
+                  class="text-sm px-2 py-1 border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
+                  title="Ditado por voz">
+            🎙️ Falar
+          </button>
+        </div>
+  
+        <textarea id="content" rows="8" 
+                  class="w-full border border-[var(--color-border)] rounded-lg px-3 py-2 bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-[var(--color-text)]/50"
+                  placeholder="Fale ou escreva aqui…"></textarea>
+  
+        <p id="speech-debug" class="mt-1 text-xs text-[var(--color-text)]/50"></p>
       </div>
   
       <div class="flex gap-2">
         <button type="submit"
-                class="px-3 py-2 bg-slate-900 text-white rounded-lg">
+                class="px-3 py-2 bg-[var(--color-primary)] text-[var(--color-primary-fg)] rounded-lg hover:opacity-90">
           Salvar
         </button>
         <button type="button"
-                class="px-3 py-2 border rounded-lg"
+                class="px-3 py-2 border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
                 onclick="app.showList()">
           Cancelar
         </button>
         <button type="button" id="deleteBtn"
-                class="ml-auto px-3 py-2 border border-red-500 text-red-600 rounded-lg hidden"
+                class="ml-auto px-3 py-2 border border-[var(--color-danger)] text-[var(--color-danger)] rounded-lg hidden hover:bg-[var(--color-surface-muted)]"
                 onclick="app.deleteCurrentNote()">
           Excluir
         </button>
       </div>
     </form>
   </section>
+  
+  <script>
+  (function () {
+    // Referências (mantendo IDs existentes do app)
+    const form = document.getElementById('formNota');
+    const ta   = document.getElementById('content');
+    const mic  = document.getElementById('mic-btn');
+    const dbg  = document.getElementById('speech-debug');
+    const titleHidden = document.getElementById('note-title-hidden');
+    const titleInput  = document.getElementById('title');
+  
+    const say = (m)=>{ if(dbg) dbg.textContent = m; console.log('[speech]', m); };
+  
+    // ---------- TÍTULO AUTO ----------
+    function defaultTitle(){
+      const d = new Date();
+      const pad = (n)=> String(n).padStart(2,'0');
+      return `Nota ${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+    function makeTitleFromContent(txt){
+      let firstLine = (txt || '').split(/\r?\n/).map(s=>s.trim()).find(Boolean) || '';
+      firstLine = firstLine || txt.trim();
+      if (!firstLine) return defaultTitle();
+      return firstLine.replace(/\s+/g,' ').slice(0,60).trim() || defaultTitle();
+    }
+    function ensureTitle(){
+      const txt = ta.value || '';
+      const t = makeTitleFromContent(txt);
+      // Se o título visível estiver vazio, usa o oculto como fallback
+      if (titleInput && !titleInput.value.trim()) titleHidden.value = t;
+      else titleHidden.value = '';
+    }
+    // Chamada pelo onsubmit do <form>
+    window.ensureTitleSync = function(){
+      ensureTitle();
+      // Se ainda estiver vazio, preenche o visível com o gerado
+      if (titleInput && !titleInput.value.trim() && titleHidden.value.trim()){
+        titleInput.value = titleHidden.value.trim();
+      }
+    };
+  
+    ta.addEventListener('input', ensureTitle);
+  
+    // ---------- DETECÇÃO Capacitor x Web ----------
+    const Cap = window.Capacitor;
+    const isNative = !!(Cap && typeof Cap.isNativePlatform === 'function' && Cap.isNativePlatform());
+    const SpeechPlugin = Cap && Cap.Plugins && Cap.Plugins.SpeechRecognition;
+  
+    let listening = false;
+    let webRec = null;
+  
+    async function ensurePerms() {
+      if (isNative && SpeechPlugin) {
+        try {
+          const p = await SpeechPlugin.checkPermissions();
+          if (p.speechRecognition !== 'granted') await SpeechPlugin.requestPermissions();
+        } catch (e) { console.warn(e); }
+      }
+    }
+  
+    // ---------- Fluxo nativo (Android via Capacitor) ----------
+    async function startNative() {
+      await ensurePerms();
+      listening = true;
+      mic.textContent = '🛑 Parar';
+      say('Ouvindo (nativo)…');
+      await SpeechPlugin.start({
+        language: 'pt-BR',
+        partialResults: true,
+        popup: false,
+        maxResults: 1,
+        preferOffline: true
+      });
+    }
+    async function stopNative() {
+      listening = false;
+      mic.textContent = '🎙️ Falar';
+      say('Parado.');
+      await SpeechPlugin.stop();
+      autoSave();
+    }
+    if (isNative && SpeechPlugin && SpeechPlugin.addListener) {
+      SpeechPlugin.addListener('partialResults', ({ matches }) => {
+        if (matches?.length) {
+          ta.value = matches[0];
+          ensureTitle();
+        }
+      });
+      SpeechPlugin.addListener('result', ({ matches }) => {
+        if (matches?.length) {
+          ta.value = matches[0];
+          ensureTitle();
+        }
+      });
+    }
+  
+    // ---------- Fluxo web (Chrome/Edge) ----------
+    function startWeb() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) { alert('Seu navegador não suporta ditado. No Android, use o app.'); return; }
+      webRec = new SR();
+      webRec.lang = 'pt-BR';
+      webRec.interimResults = true;
+      webRec.maxAlternatives = 1;
+  
+      webRec.onstart  = () => { say('Ouvindo (web)…'); };
+      webRec.onerror  = (e) => { say('Erro: ' + (e.error || 'desconhecido')); };
+      webRec.onresult = (e) => {
+        const t = Array.from(e.results).map(r => r[0].transcript).join(' ');
+        ta.value = t; ensureTitle();
+      };
+      webRec.onend    = () => {
+        listening = false;
+        mic.textContent = '🎙️ Falar';
+        say('Parado.');
+        autoSave();
+      };
+  
+      listening = true;
+      mic.textContent = '🛑 Parar';
+      webRec.start();
+    }
+    function stopWeb() { if (webRec) webRec.stop(); }
+  
+    // ---------- TOGGLE ----------
+    mic.addEventListener('click', (ev)=>{
+      ev.preventDefault();
+      if (!listening) { if (isNative && SpeechPlugin) startNative(); else startWeb(); }
+      else { if (isNative && SpeechPlugin) stopNative(); else stopWeb(); }
+    });
+  
+    // ---------- AUTO-SAVE (opcional) ----------
+    function autoSave() {
+      const txt = ta.value.trim();
+      if (!txt) return;
+      ensureTitle();
+      // dispara o submit para o app salvar/renderizar
+      form.requestSubmit();
+    }
+  
+    // foco inicial
+    setTimeout(()=>ta.focus(), 50);
+  })();
+  </script>
   

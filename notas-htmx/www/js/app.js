@@ -21,19 +21,20 @@ async function renderList() {
     item.className = 'p-3 bg-white rounded-xl border border-slate-200';
     const date = new Date(n.updatedAt).toLocaleString();
     item.innerHTML = `
-      <div class="flex items-start gap-3">
-        <div class="flex-1">
-          <h3 class="font-medium">${escapeHTML(n.title || '(sem título)')}</h3>
-          <p class="text-sm text-slate-600 line-clamp-2">${escapeHTML(n.content || '')}</p>
-          <p class="mt-1 text-xs text-slate-400">${date}</p>
-        </div>
-        <div class="flex flex-col gap-2">
-          <button class="px-2 py-1 border rounded-lg text-sm"
-                  onclick="app.showForm('${n.id}')">Editar</button>
-          <button class="px-2 py-1 border border-red-500 text-red-600 rounded-lg text-sm"
-                  onclick="app.deleteNote('${n.id}')">Excluir</button>
-        </div>
-      </div>
+<div class="flex items-start gap-3">
+  <div class="flex-1">
+    <h3 class="font-medium">${escapeHTML(n.title || '(sem título)')}</h3>
+    <p class="text-sm text-[var(--color-text)]/70 line-clamp-2">${escapeHTML(n.content || '')}</p>
+    <p class="mt-1 text-xs text-[var(--color-text)]/50">${date}</p>
+  </div>
+  <div class="flex flex-col gap-2">
+    <button class="px-2 py-1 border border-[var(--color-border)] rounded-lg text-sm bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-[var(--color-surface-muted)]"
+            onclick="app.showForm('${n.id}')">Editar</button>
+    <button class="px-2 py-1 border border-[var(--color-danger)] text-[var(--color-danger)] rounded-lg text-sm hover:bg-[var(--color-surface-muted)]"
+            onclick="app.deleteNote('${n.id}')">Excluir</button>
+  </div>
+</div>
+
     `;
     list.appendChild(item);
   }

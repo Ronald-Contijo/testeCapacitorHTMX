@@ -1,0 +1,15 @@
+<!-- icons/horse-emoji.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- fundo (remova para ficar transparente) -->
+  <rect x="0" y="0" width="1024" height="1024" rx="180" fill="#ffffff"/>
+  <style>
+    text{
+      dominant-baseline: middle;
+      text-anchor: middle;
+      font-size: 820px;
+      /* tenta usar uma fonte de emoji colorida comum no Android */
+      font-family: "Noto Color Emoji", "Segoe UI Emoji", "Apple Color Emoji", "Twemoji Mozilla", system-ui, sans-serif;
+    }
+  </style>
+  <text x="512" y="540">🐴</text>
+</svg>

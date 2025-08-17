@@ -4,6 +4,151 @@
 
 ```
 📁 .
+  📁 android
+    📁 .gradle
+      📁 8.11.1
+        📁 checksums
+          📄 checksums.lock
+        📁 executionHistory
+          📄 executionHistory.bin
+          📄 executionHistory.lock
+        📁 expanded
+        📁 fileChanges
+          📄 last-build.bin
+        📁 fileHashes
+          📄 fileHashes.bin
+          📄 fileHashes.lock
+          📄 resourceHashesCache.bin
+        📁 vcsMetadata
+        📄 gc.properties
+      📁 buildOutputCleanup
+        📄 buildOutputCleanup.lock
+        📄 cache.properties
+        📄 outputFiles.bin
+      📁 vcs-1
+        📄 gc.properties
+      📄 config.properties
+      📄 file-system.probe
+    📁 app
+      📁 src
+        📁 androidTest
+          📁 java
+            📁 com
+              📁 getcapacitor
+                📁 myapp
+                  📄 ExampleInstrumentedTest.java
+        📁 main
+          📁 assets
+            📁 public
+              📁 js
+                📄 app.js
+                📄 db.js
+              📁 partials
+                📄 note_form.html
+                📄 notes_list.html
+                📄 settings.html
+              📄 cordova.js
+              📄 cordova_plugins.js
+              📄 index.html
+            📄 capacitor.config.json
+            📄 capacitor.plugins.json
+          📁 java
+            📁 com
+              📁 seuapp
+                📁 notas
+                  📄 MainActivity.java
+          📁 res
+            📁 drawable
+              📄 ic_launcher_background.xml
+              📄 splash.png
+            📁 drawable-land-hdpi
+              📄 splash.png
+            📁 drawable-land-mdpi
+              📄 splash.png
+            📁 drawable-land-xhdpi
+              📄 splash.png
+            📁 drawable-land-xxhdpi
+              📄 splash.png
+            📁 drawable-land-xxxhdpi
+              📄 splash.png
+            📁 drawable-port-hdpi
+              📄 splash.png
+            📁 drawable-port-mdpi
+              📄 splash.png
+            📁 drawable-port-xhdpi
+              📄 splash.png
+            📁 drawable-port-xxhdpi
+              📄 splash.png
+            📁 drawable-port-xxxhdpi
+              📄 splash.png
+            📁 drawable-v24
+              📄 ic_launcher_foreground.xml
+            📁 layout
+              📄 activity_main.xml
+            📁 mipmap-anydpi-v26
+              📄 ic_launcher.xml
+              📄 ic_launcher_round.xml
+            📁 mipmap-hdpi
+              📄 ic_launcher.png
+              📄 ic_launcher_foreground.png
+              📄 ic_launcher_round.png
+            📁 mipmap-mdpi
+              📄 ic_launcher.png
+              📄 ic_launcher_foreground.png
+              📄 ic_launcher_round.png
+            📁 mipmap-xhdpi
+              📄 ic_launcher.png
+              📄 ic_launcher_foreground.png
+              📄 ic_launcher_round.png
+            📁 mipmap-xxhdpi
+              📄 ic_launcher.png
+              📄 ic_launcher_foreground.png
+              📄 ic_launcher_round.png
+            📁 mipmap-xxxhdpi
+              📄 ic_launcher.png
+              📄 ic_launcher_foreground.png
+              📄 ic_launcher_round.png
+            📁 values
+              📄 ic_launcher_background.xml
+              📄 strings.xml
+              📄 styles.xml
+            📁 xml
+              📄 config.xml
+              📄 file_paths.xml
+          📄 AndroidManifest.xml
+        📁 test
+          📁 java
+            📁 com
+              📁 getcapacitor
+                📁 myapp
+                  📄 ExampleUnitTest.java
+      📄 .gitignore
+      📄 build.gradle
+      📄 capacitor.build.gradle
+      📄 proguard-rules.pro
+    📁 capacitor-cordova-android-plugins
+      📁 src
+        📁 main
+          📁 java
+            📄 .gitkeep
+          📁 res
+            📄 .gitkeep
+          📄 AndroidManifest.xml
+      📄 build.gradle
+      📄 cordova.variables.gradle
+    📁 gradle
+      📁 wrapper
+        📄 gradle-wrapper.jar
+        📄 gradle-wrapper.properties
+    📄 .gitignore
+    📄 build.gradle
+    📄 capacitor.settings.gradle
+    📄 gradle.properties
+    📄 gradlew
+    📄 gradlew.bat
+    📄 local.properties
+    📄 settings.gradle
+    📄 variables.gradle
   📁 www
     📁 js
       📄 app.js
@@ -47,8 +192,28 @@
       "version": "1.0.0",
       "license": "ISC",
       "dependencies": {
+        "@capacitor-community/speech-recognition": "^7.0.1",
+        "@capacitor/android": "^7.4.2",
         "@capacitor/cli": "^7.4.2",
         "@capacitor/core": "^7.4.2"
+      }
+    },
+    "node_modules/@capacitor-community/speech-recognition": {
+      "version": "7.0.1",
+      "resolved": "https://registry.npmjs.org/@capacitor-community/speech-recognition/-/speech-recognition-7.0.1.tgz",
+      "integrity": "sha512-ykpBZziR575X0eURO5vXaD9gVrXXC/7Ra2qql/2KP6/jxWOqAFuw4eKjSPjwdAgGE6a/Z+v8FJm4SVh57MVwDA==",
+      "license": "MIT",
+      "peerDependencies": {
+        "@capacitor/core": ">=7.0.0"
+      }
+    },
+    "node_modules/@capacitor/android": {
+      "version": "7.4.2",
+      "resolved": "https://registry.npmjs.org/@capacitor/android/-/android-7.4.2.tgz",
+      "integrity": "sha512-FZ7M9NwFkljR7EP5eXiE32mAIfZNcYw2CzRMCG3rQu0u0ZaIoeOeq5/oK4YcDnGpNmu8jpngKJqZ+9OiSQSwDg==",
+      "license": "MIT",
+      "peerDependencies": {
+        "@capacitor/core": "^7.4.0"
       }
     },
     "node_modules/@capacitor/cli": {
@@ -1360,6 +1525,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@capacitor-community/speech-recognition": "^7.0.1",
+    "@capacitor/android": "^7.4.2",
     "@capacitor/cli": "^7.4.2",
     "@capacitor/core": "^7.4.2"
   }
@@ -1391,7 +1558,7 @@
 <body class="bg-slate-50 text-slate-800">
 
   <!-- Header -->
-  <header class="sticky top-0 z-10 bg-white border-b border-slate-200">
+  <header class="sticky top-0 z-10 bg-white border-b border-slate-200 p-4">
     <div class="max-w-2xl mx-auto px-4 py-3">
       <h1 class="text-xl font-semibold">Notas</h1>
     </div>
@@ -1407,7 +1574,7 @@
   </main>
 
   <!-- Bottom Nav -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200">
+  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 pb-4">
     <div class="max-w-2xl mx-auto grid grid-cols-3">
       <button class="py-3 text-sm font-medium hover:bg-slate-100"
               onclick="app.showList()">Notas</button>
@@ -1653,8 +1820,11 @@ export const NotesDB = {
 <section id="noteForm">
     <h2 class="text-lg font-semibold mb-3">Nota</h2>
   
-    <form id="formNota" class="space-y-3" onsubmit="app.saveNote(event)">
+    <form id="formNota" class="space-y-3" onsubmit="ensureTitleSync(); return app.saveNote(event)">
       <input type="hidden" id="noteId" />
+  
+      <!-- Campo oculto para título gerado automaticamente (fallback) -->
+      <input type="hidden" id="note-title-hidden" />
   
       <div>
         <label class="block text-sm font-medium mb-1" for="title">Título</label>
@@ -1663,9 +1833,21 @@ export const NotesDB = {
       </div>
   
       <div>
-        <label class="block text-sm font-medium mb-1" for="content">Conteúdo</label>
+        <div class="flex items-center justify-between mb-1">
+          <label class="block text-sm font-medium" for="content">Conteúdo</label>
+  
+          <!-- Botão do microfone -->
+          <button type="button" id="mic-btn"
+                  class="text-sm px-2 py-1 border rounded-lg"
+                  title="Ditado por voz">
+            🎙️ Falar
+          </button>
+        </div>
+  
         <textarea id="content" rows="8" class="w-full border rounded-lg px-3 py-2"
-                  placeholder="Escreva aqui..."></textarea>
+                  placeholder="Fale ou escreva aqui…"></textarea>
+  
+        <p id="speech-debug" class="mt-1 text-xs text-slate-400"></p>
       </div>
   
       <div class="flex gap-2">
@@ -1686,6 +1868,150 @@ export const NotesDB = {
       </div>
     </form>
   </section>
+  
+  <script>
+  (function () {
+    // Referências (mantendo IDs existentes do app)
+    const form = document.getElementById('formNota');
+    const ta   = document.getElementById('content');
+    const mic  = document.getElementById('mic-btn');
+    const dbg  = document.getElementById('speech-debug');
+    const titleHidden = document.getElementById('note-title-hidden');
+    const titleInput  = document.getElementById('title');
+  
+    const say = (m)=>{ if(dbg) dbg.textContent = m; console.log('[speech]', m); };
+  
+    // ---------- TÍTULO AUTO ----------
+    function defaultTitle(){
+      const d = new Date();
+      const pad = (n)=> String(n).padStart(2,'0');
+      return `Nota ${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+    function makeTitleFromContent(txt){
+      let firstLine = (txt || '').split(/\r?\n/).map(s=>s.trim()).find(Boolean) || '';
+      firstLine = firstLine || txt.trim();
+      if (!firstLine) return defaultTitle();
+      return firstLine.replace(/\s+/g,' ').slice(0,60).trim() || defaultTitle();
+    }
+    function ensureTitle(){
+      const txt = ta.value || '';
+      const t = makeTitleFromContent(txt);
+      // Se o título visível estiver vazio, usa o oculto como fallback
+      if (titleInput && !titleInput.value.trim()) titleHidden.value = t;
+      else titleHidden.value = '';
+    }
+    // Chamada pelo onsubmit do <form>
+    window.ensureTitleSync = function(){
+      ensureTitle();
+      // Se ainda estiver vazio, preenche o visível com o gerado
+      if (titleInput && !titleInput.value.trim() && titleHidden.value.trim()){
+        titleInput.value = titleHidden.value.trim();
+      }
+    };
+  
+    ta.addEventListener('input', ensureTitle);
+  
+    // ---------- DETECÇÃO Capacitor x Web ----------
+    const Cap = window.Capacitor;
+    const isNative = !!(Cap && typeof Cap.isNativePlatform === 'function' && Cap.isNativePlatform());
+    const SpeechPlugin = Cap && Cap.Plugins && Cap.Plugins.SpeechRecognition;
+  
+    let listening = false;
+    let webRec = null;
+  
+    async function ensurePerms() {
+      if (isNative && SpeechPlugin) {
+        try {
+          const p = await SpeechPlugin.checkPermissions();
+          if (p.speechRecognition !== 'granted') await SpeechPlugin.requestPermissions();
+        } catch (e) { console.warn(e); }
+      }
+    }
+  
+    // ---------- Fluxo nativo (Android via Capacitor) ----------
+    async function startNative() {
+      await ensurePerms();
+      listening = true;
+      mic.textContent = '🛑 Parar';
+      say('Ouvindo (nativo)…');
+      await SpeechPlugin.start({
+        language: 'pt-BR',
+        partialResults: true,
+        popup: false,
+        maxResults: 1,
+        preferOffline: true
+      });
+    }
+    async function stopNative() {
+      listening = false;
+      mic.textContent = '🎙️ Falar';
+      say('Parado.');
+      await SpeechPlugin.stop();
+      autoSave();
+    }
+    if (isNative && SpeechPlugin && SpeechPlugin.addListener) {
+      SpeechPlugin.addListener('partialResults', ({ matches }) => {
+        if (matches?.length) {
+          ta.value = matches[0];
+          ensureTitle();
+        }
+      });
+      SpeechPlugin.addListener('result', ({ matches }) => {
+        if (matches?.length) {
+          ta.value = matches[0];
+          ensureTitle();
+        }
+      });
+    }
+  
+    // ---------- Fluxo web (Chrome/Edge) ----------
+    function startWeb() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) { alert('Seu navegador não suporta ditado. No Android, use o app.'); return; }
+      webRec = new SR();
+      webRec.lang = 'pt-BR';
+      webRec.interimResults = true;
+      webRec.maxAlternatives = 1;
+  
+      webRec.onstart  = () => { say('Ouvindo (web)…'); };
+      webRec.onerror  = (e) => { say('Erro: ' + (e.error || 'desconhecido')); };
+      webRec.onresult = (e) => {
+        const t = Array.from(e.results).map(r => r[0].transcript).join(' ');
+        ta.value = t; ensureTitle();
+      };
+      webRec.onend    = () => {
+        listening = false;
+        mic.textContent = '🎙️ Falar';
+        say('Parado.');
+        autoSave();
+      };
+  
+      listening = true;
+      mic.textContent = '🛑 Parar';
+      webRec.start();
+    }
+    function stopWeb() { if (webRec) webRec.stop(); }
+  
+    // ---------- TOGGLE ----------
+    mic.addEventListener('click', (ev)=>{
+      ev.preventDefault();
+      if (!listening) { if (isNative && SpeechPlugin) startNative(); else startWeb(); }
+      else { if (isNative && SpeechPlugin) stopNative(); else stopWeb(); }
+    });
+  
+    // ---------- AUTO-SAVE (opcional) ----------
+    function autoSave() {
+      const txt = ta.value.trim();
+      if (!txt) return;
+      ensureTitle();
+      // dispara o submit para o app salvar/renderizar
+      form.requestSubmit();
+    }
+  
+    // foco inicial
+    setTimeout(()=>ta.focus(), 50);
+  })();
+  </script>
   
 ```
 
